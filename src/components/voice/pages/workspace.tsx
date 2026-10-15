@@ -128,7 +128,7 @@ export function WorkspacePage({ user, defaultWorkMode = "BALANCED", onTaskCreate
       setHistory(newHistory);
       try { localStorage.setItem(PROMPT_HISTORY_KEY, JSON.stringify(newHistory)); } catch {}
 
-      // Start execution
+      // Mark task as started (execution happens via /api/tasks/step polling)
       await fetch("/api/tasks/execute", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -154,6 +154,12 @@ export function WorkspacePage({ user, defaultWorkMode = "BALANCED", onTaskCreate
     if (pollingRef.current) clearInterval(pollingRef.current);
     pollingRef.current = setInterval(async () => {
       try {
+        // Call step endpoint to process ONE subtask, then fetch state
+        await fetch("/api/tasks/step", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ taskId }),
+        });
         const res = await fetch(`/api/tasks/execute?id=${taskId}`);
         const data = await res.json();
         if (data.task) {

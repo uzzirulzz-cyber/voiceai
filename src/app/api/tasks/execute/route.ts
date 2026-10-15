@@ -5,7 +5,9 @@ import { db } from "@/lib/db";
 import { requireUser } from "@/lib/auth";
 import { executeTask } from "@/lib/fusion-engine";
 
-// Start task execution (non-blocking)
+// Start task execution — SYNCHRONOUS (awaits full execution on Edge runtime)
+// On Cloudflare Edge, background tasks are killed when the response is sent.
+// So we must await the full execution before returning.
 export async function POST(request: NextRequest) {
   try {
     const user = await requireUser();
@@ -20,27 +22,40 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Task is already running or completed" }, { status: 400 });
     }
 
-    // Mark as running immediately
+    // Mark as running
     await db.task.update({
       where: { id: taskId },
       data: { status: "PLANNING", startedAt: new Date() },
     });
 
-    // Kick off execution in the background (non-blocking)
-    executeTask(taskId, task.description, task.workMode as "FAST" | "BALANCED" | "DEEP")
-      .catch(async (err) => {
-        console.error(`[Task ${taskId}] execution failed:`, err);
-        await db.task.update({
-          where: { id: taskId },
-          data: {
-            status: "FAILED",
-            errorMessage: err instanceof Error ? err.message : "Unknown execution error",
-            completedAt: new Date(),
-          },
-        });
+    // Execute SYNCHRONOUSLY — wait for the full task to complete
+    try {
+      await executeTask(taskId, task.description, task.workMode as "FAST" | "BALANCED" | "DEEP");
+      
+      const finalTask = await db.task.findFirst({ where: { id: taskId } });
+      return NextResponse.json({
+        message: "Task completed",
+        taskId,
+        status: finalTask?.status || "UNKNOWN",
+        usedTokens: finalTask?.usedTokens || 0,
+        estimatedCost: finalTask?.estimatedCost || 0,
       });
-
-    return NextResponse.json({ message: "Task execution started", taskId });
+    } catch (err) {
+      console.error(`[Task ${taskId}] execution failed:`, err);
+      await db.task.update({
+        where: { id: taskId },
+        data: {
+          status: "FAILED",
+          errorMessage: err instanceof Error ? err.message : "Unknown execution error",
+          completedAt: new Date(),
+        },
+      });
+      return NextResponse.json({
+        message: "Task failed",
+        taskId,
+        error: err instanceof Error ? err.message : "Unknown error",
+      }, { status: 500 });
+    }
   } catch (err) {
     return NextResponse.json({ error: err instanceof Error ? err.message : "Failed" }, { status: 500 });
   }

@@ -112,7 +112,7 @@ export const db = {
         const { email, name, passwordHash, role, status, creditBalanceUsd, creditMonthlyUsd, creditResetDay, creditLastReset } = args.data;
         await d1.prepare(
           "INSERT INTO User (id, email, name, passwordHash, role, status, creditBalanceUsd, creditMonthlyUsd, creditResetDay, creditLastReset) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-        ).bind(id, email, name || null, passwordHash, role || "USER", status || "ACTIVE", creditBalanceUsd || 0, creditMonthlyUsd || 0, creditResetDay || 1, creditLastReset || null).run();
+        ).bind(id, email, name || null, passwordHash, role || "USER", status || "ACTIVE", creditBalanceUsd || 0, creditMonthlyUsd || 0, creditResetDay || 1, creditLastReset ? (creditLastReset instanceof Date ? creditLastReset.toISOString() : creditLastReset) : null).run();
         return { id, ...args.data };
       }
       const prisma = await getPrisma();
@@ -125,7 +125,7 @@ export const db = {
         const vals: any[] = [];
         for (const [k, v] of Object.entries(args.data)) {
           sets.push(`${k} = ?`);
-          vals.push(v);
+          vals.push(v instanceof Date ? v.toISOString() : v);
         }
         sets.push("updatedAt = datetime('now')");
         vals.push(args.where.id);
@@ -248,7 +248,7 @@ export const db = {
         const vals: any[] = [];
         for (const [k, v] of Object.entries(args.data)) {
           sets.push(`${k} = ?`);
-          vals.push(v);
+          vals.push(v instanceof Date ? v.toISOString() : v);
         }
         sets.push("updatedAt = datetime('now')");
         vals.push(args.where.id);
@@ -326,7 +326,7 @@ export const db = {
         const vals: any[] = [];
         for (const [k, v] of Object.entries(args.data)) {
           sets.push(`${k} = ?`);
-          vals.push(v);
+          vals.push(v instanceof Date ? v.toISOString() : v);
         }
         sets.push("updatedAt = datetime('now')");
         vals.push(args.where.id);
@@ -393,7 +393,7 @@ export const db = {
             sets.push(`${k} = NULL`);
           } else {
             sets.push(`${k} = ?`);
-            vals.push(v);
+            vals.push(v instanceof Date ? v.toISOString() : v);
           }
         }
         sets.push("updatedAt = datetime('now')");
@@ -520,7 +520,7 @@ export const db = {
             sets.push(`${k} = NULL`);
           } else {
             sets.push(`${k} = ?`);
-            vals.push(v);
+            vals.push(v instanceof Date ? v.toISOString() : v);
           }
         }
         sets.push("updatedAt = datetime('now')");
