@@ -1,4 +1,4 @@
-# Mystic AI — Production Dockerfile
+# Voice AI — Production Dockerfile
 # Multi-stage build for smaller image
 
 # ---- Stage 1: deps ----

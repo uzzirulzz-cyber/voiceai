@@ -26,7 +26,7 @@ import {
   Loader2,
   AlertTriangle,
 } from "lucide-react";
-import { MysticWordmark } from "@/components/mystic/logo";
+import { VoiceWordmark } from "@/components/voice/logo";
 import { toast } from "sonner";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -212,7 +212,7 @@ export default function AdminPage() {
           </Button>
         </div>
         <div className="flex items-center gap-3">
-          <MysticWordmark size={28} />
+          <VoiceWordmark size={28} />
           <Badge variant="outline" className="text-[10px]">
             <Shield className="w-3 h-3 mr-1" style={{ color: "var(--gold)" }} />
             Admin Panel
@@ -252,7 +252,7 @@ export default function AdminPage() {
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mystic-card p-4 mb-6 flex items-center gap-3 flex-wrap"
+          className="voice-card p-4 mb-6 flex items-center gap-3 flex-wrap"
           style={{ background: "linear-gradient(135deg, rgba(48,201,149,0.08), rgba(79,140,255,0.04))" }}
         >
           <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
@@ -265,7 +265,7 @@ export default function AdminPage() {
               Real API calls via OpenRouter + z-ai-sdk. No mocks. Click below to re-verify live.
             </div>
           </div>
-          <Button onClick={runHealthCheck} disabled={checking} size="sm" className="btn-mystic">
+          <Button onClick={runHealthCheck} disabled={checking} size="sm" className="btn-voice">
             {checking ? <Loader2 className="w-3.5 h-3.5 animate-spin mr-1.5" /> : <RefreshCw className="w-3.5 h-3.5 mr-1.5" />}
             {checking ? "Verifying..." : "Verify Live"}
           </Button>
@@ -276,7 +276,7 @@ export default function AdminPage() {
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mystic-card p-4 mb-6"
+            className="voice-card p-4 mb-6"
           >
             <h3 className="text-sm font-semibold mb-3">Live Health Check Results</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3">
@@ -352,7 +352,7 @@ export default function AdminPage() {
 
                   {/* Tasks by status */}
                   {overview?.tasksByStatus && Object.keys(overview.tasksByStatus).length > 0 && (
-                    <Card className="mystic-card">
+                    <Card className="voice-card">
                       <CardHeader>
                         <CardTitle className="text-sm">Tasks by Status</CardTitle>
                       </CardHeader>
@@ -371,7 +371,7 @@ export default function AdminPage() {
 
                   {/* Provider usage */}
                   {overview?.usageByProvider && Object.keys(overview.usageByProvider).length > 0 && (
-                    <Card className="mystic-card">
+                    <Card className="voice-card">
                       <CardHeader>
                         <CardTitle className="text-sm">Provider Usage Breakdown</CardTitle>
                       </CardHeader>
@@ -410,7 +410,7 @@ export default function AdminPage() {
                   )}
 
                   {(!overview?.tasksByStatus || Object.keys(overview.tasksByStatus).length === 0) && (
-                    <div className="mystic-card p-8 text-center">
+                    <div className="voice-card p-8 text-center">
                       <AlertTriangle className="w-8 h-8 mx-auto text-muted-foreground mb-2 opacity-50" />
                       <div className="text-sm font-medium">No task data yet</div>
                       <div className="text-xs text-muted-foreground mt-1">Run a task from AI Workspace to populate analytics</div>
@@ -423,7 +423,7 @@ export default function AdminPage() {
 
           {/* USERS */}
           <TabsContent value="users">
-            <Card className="mystic-card">
+            <Card className="voice-card">
               <CardHeader>
                 <CardTitle className="text-sm flex items-center justify-between">
                   <span>Users ({users.length})</span>
@@ -490,7 +490,7 @@ export default function AdminPage() {
 
           {/* PROVIDERS */}
           <TabsContent value="providers">
-            <div className="mystic-card p-5">
+            <div className="voice-card p-5">
               <h3 className="text-sm font-semibold mb-3 flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4" style={{ color: "var(--success)" }} />
                 All 5 Providers Live — Verified
@@ -532,7 +532,7 @@ export default function AdminPage() {
 
           {/* TASKS */}
           <TabsContent value="tasks">
-            <Card className="mystic-card">
+            <Card className="voice-card">
               <CardHeader>
                 <CardTitle className="text-sm flex items-center justify-between">
                   <span>Recent Tasks ({tasks.length})</span>
@@ -579,7 +579,7 @@ export default function AdminPage() {
 
           {/* AUDIT */}
           <TabsContent value="audit">
-            <Card className="mystic-card">
+            <Card className="voice-card">
               <CardHeader>
                 <CardTitle className="text-sm flex items-center justify-between">
                   <span>Audit Logs ({logs.length})</span>
@@ -619,7 +619,7 @@ export default function AdminPage() {
 
 function StatCard({ label, value, sub, icon: Icon, color }: { label: string; value: any; sub: string; icon: any; color: string }) {
   return (
-    <Card className="mystic-card">
+    <Card className="voice-card">
       <CardContent className="p-4">
         <div className="flex items-center justify-between mb-2">
           <span className="text-[10px] uppercase tracking-wider text-muted-foreground">{label}</span>

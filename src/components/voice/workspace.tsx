@@ -25,7 +25,7 @@ import {
   Activity,
   Menu,
 } from "lucide-react";
-import { MysticWordmark } from "./logo";
+import { VoiceWordmark } from "./logo";
 import { ProjectExplorer } from "./project-explorer";
 import { WorkArea } from "./work-area";
 import { FusionPanel } from "./fusion-panel";
@@ -345,7 +345,7 @@ export function Workspace({ user, onLogout, onNavigate }: WorkspaceProps) {
           >
             <Menu className="w-5 h-5" />
           </button>
-          <MysticWordmark size={32} />
+          <VoiceWordmark size={32} />
         </div>
 
         <div className="flex items-center gap-2">
@@ -389,7 +389,7 @@ export function Workspace({ user, onLogout, onNavigate }: WorkspaceProps) {
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="sm" className="gap-2">
                 <Avatar className="w-7 h-7">
-                  <AvatarFallback className="text-xs" style={{ background: "var(--mystic-blue)", color: "white" }}>
+                  <AvatarFallback className="text-xs" style={{ background: "var(--voice-blue)", color: "white" }}>
                     {(user.name || user.email)[0].toUpperCase()}
                   </AvatarFallback>
                 </Avatar>
@@ -445,7 +445,7 @@ export function Workspace({ user, onLogout, onNavigate }: WorkspaceProps) {
                 ? "text-foreground border-b-2 border-primary"
                 : "text-muted-foreground"
             }`}
-            style={mobilePanel === tab.key ? { borderBottomColor: "var(--mystic-blue)" } : {}}
+            style={mobilePanel === tab.key ? { borderBottomColor: "var(--voice-blue)" } : {}}
           >
             <tab.icon className="w-3.5 h-3.5" />
             {tab.label}

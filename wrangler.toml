@@ -1,13 +1,13 @@
-name = "mysticai"
+name = "voiceai"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".vercel/output/static"
 
 [[d1_databases]]
 binding = "DB"
-database_name = "mysticai-db"
+database_name = "voiceai-db"
 database_id = "fe31648e-7104-4dab-a8ad-508a5cdf00c7"
 
 [vars]
-NEXT_PUBLIC_APP_URL = "https://mysticai.playbeat.live"
-NEXT_PUBLIC_APP_NAME = "Mystic AI"
+NEXT_PUBLIC_APP_URL = "https://voice.playbeat.live"
+NEXT_PUBLIC_APP_NAME = "Voice AI"

@@ -52,7 +52,7 @@
    - Electric blue + violet flash accents that "flash" on interaction
    - Glass morphism with subtle blur
    - Premium gold for super admin elements
-   - CoreUI --cui-* variables mapped to Mystic AI palette
+   - CoreUI --cui-* variables mapped to Voice AI palette
    
    ═══════════════════════════════════════════════════════════════════════════ */
 
@@ -368,7 +368,7 @@
    ═══════════════════════════════════════════════════════════════ */
 
 /* Premium Card with flash-light effect */
-.mystic-card {
+.voice-card {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -379,7 +379,7 @@
   position: relative;
   overflow: hidden;
 }
-.mystic-card::before {
+.voice-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -390,7 +390,7 @@
   opacity: 0;
   transition: opacity 0.3s ease;
 }
-.mystic-card:hover {
+.voice-card:hover {
   border-color: rgba(79, 140, 255, 0.3);
   box-shadow:
     0 2px 4px rgba(0, 0, 0, 0.08),
@@ -398,11 +398,11 @@
     0 0 20px var(--primary-glow);
   transform: translateY(-2px);
 }
-.mystic-card:hover::before {
+.voice-card:hover::before {
   opacity: 1;
 }
 
-.mystic-card-elevated {
+.voice-card-elevated {
   background: var(--popover);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -411,16 +411,16 @@
     0 12px 40px rgba(0, 0, 0, 0.20);
 }
 
-.mystic-glass {
+.voice-glass {
   background: rgba(12, 21, 37, 0.70);
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   border: 1px solid rgba(122, 139, 170, 0.10);
 }
-[data-theme="arctic"] .mystic-glass {
+[data-theme="arctic"] .voice-glass {
   background: rgba(255, 255, 255, 0.75);
 }
-[data-theme="indigo"] .mystic-glass {
+[data-theme="indigo"] .voice-glass {
   background: rgba(21, 8, 44, 0.65);
 }
 
@@ -442,7 +442,7 @@
 }
 
 /* Flash light button */
-.btn-mystic {
+.btn-voice {
   background: linear-gradient(135deg, var(--primary), color-mix(in srgb, var(--primary) 75%, var(--accent)));
   color: var(--primary-foreground);
   border: 0;
@@ -455,7 +455,7 @@
   position: relative;
   overflow: hidden;
 }
-.btn-mystic::after {
+.btn-voice::after {
   content: '';
   position: absolute;
   top: 0;
@@ -465,11 +465,11 @@
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
   transition: left 0.5s ease;
 }
-.btn-mystic:hover {
+.btn-voice:hover {
   transform: translateY(-1px);
   box-shadow: 0 2px 4px rgba(0,0,0,0.15), 0 8px 24px var(--primary-glow);
 }
-.btn-mystic:hover::after {
+.btn-voice:hover::after {
   left: 100%;
 }
 
@@ -624,7 +624,7 @@
 /* ═════════════════════════════════════════════════════════════════
    BOOTSTRAP / COREUI DEEP INTEGRATION
    Maps ALL Bootstrap .card, .btn, .badge, .form-* classes to the
-   Mystic AI deep premium palette.
+   Voice AI deep premium palette.
    ═══════════════════════════════════════════════════════════════ */
 
 /* Override CoreUI's light defaults with our deep palette */
@@ -633,7 +633,7 @@ body {
   color: var(--foreground) !important;
 }
 
-/* Bootstrap card → mystic deep card with flash */
+/* Bootstrap card → voice deep card with flash */
 .card {
   background-color: var(--card) !important;
   border: 1px solid var(--border) !important;

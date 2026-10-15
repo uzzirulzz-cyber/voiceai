@@ -1,4 +1,4 @@
-// Mystic AI - Core Types
+// Voice AI - Core Types
 // Five-engine AI workspace type definitions
 
 export type Provider = "CLAUDE" | "GEMINI" | "GLM" | "CODEX" | "RESEARCH";

@@ -4,21 +4,21 @@ import { useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, Loader2 } from "lucide-react";
 
-import { SettingsProvider } from "@/components/mystic/settings-context";
-import { Sidebar, type PageKey } from "@/components/mystic/sidebar";
-import { TopBar } from "@/components/mystic/top-bar";
-import { OverviewPage } from "@/components/mystic/pages/overview";
-import { WorkspacePage } from "@/components/mystic/pages/workspace";
-import { ModelsPage } from "@/components/mystic/pages/models";
-import { ProjectsPage } from "@/components/mystic/pages/projects";
-import { TasksPage } from "@/components/mystic/pages/tasks";
-import { ArtifactsPage } from "@/components/mystic/pages/artifacts";
-import { AgentsPage } from "@/components/mystic/pages/agents";
-import { BillingPage } from "@/components/mystic/pages/billing";
-import { AnalyticsPage } from "@/components/mystic/pages/analytics";
-import { SettingsPage } from "@/components/mystic/pages/settings";
-import { AuthScreen } from "@/components/mystic/auth-screen";
-import { LandingHero } from "@/components/mystic/landing-hero";
+import { SettingsProvider } from "@/components/voice/settings-context";
+import { Sidebar, type PageKey } from "@/components/voice/sidebar";
+import { TopBar } from "@/components/voice/top-bar";
+import { OverviewPage } from "@/components/voice/pages/overview";
+import { WorkspacePage } from "@/components/voice/pages/workspace";
+import { ModelsPage } from "@/components/voice/pages/models";
+import { ProjectsPage } from "@/components/voice/pages/projects";
+import { TasksPage } from "@/components/voice/pages/tasks";
+import { ArtifactsPage } from "@/components/voice/pages/artifacts";
+import { AgentsPage } from "@/components/voice/pages/agents";
+import { BillingPage } from "@/components/voice/pages/billing";
+import { AnalyticsPage } from "@/components/voice/pages/analytics";
+import { SettingsPage } from "@/components/voice/pages/settings";
+import { AuthScreen } from "@/components/voice/auth-screen";
+import { LandingHero } from "@/components/voice/landing-hero";
 
 interface User {
   id: string;
@@ -154,7 +154,7 @@ function App() {
           </div>
           <div className="flex items-center gap-2 text-muted-foreground">
             <Loader2 className="w-3.5 h-3.5 animate-spin" />
-            <span className="text-xs">Initializing Mystic AI…</span>
+            <span className="text-xs">Initializing Voice AI…</span>
           </div>
         </motion.div>
       </div>

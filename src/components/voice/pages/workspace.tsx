@@ -46,7 +46,7 @@ const PROVIDER_SELECTION: Array<{ id: Provider; label: string }> = [
   { id: "RESEARCH", label: "Research" },
 ];
 
-const PROMPT_HISTORY_KEY = "mystic-prompt-history";
+const PROMPT_HISTORY_KEY = "voice-prompt-history";
 
 export function WorkspacePage({ user, defaultWorkMode = "BALANCED", onTaskCreated }: WorkspacePageProps) {
   const [prompt, setPrompt] = useState("");
@@ -189,14 +189,14 @@ export function WorkspacePage({ user, defaultWorkMode = "BALANCED", onTaskCreate
       <div className="mb-6">
         <h1 className="text-2xl font-bold tracking-tight">AI Workspace</h1>
         <p className="text-sm text-muted-foreground mt-1">
-          Compose a task — the Mystic Fusion Engine routes it to the right engines.
+          Compose a task — the Voice Fusion Engine routes it to the right engines.
         </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Composer (center) */}
         <div className="lg:col-span-2">
-          <div className="mystic-card p-1.5 gradient-border">
+          <div className="voice-card p-1.5 gradient-border">
             {/* Prompt editor */}
             <div className="relative">
               <textarea
@@ -204,7 +204,7 @@ export function WorkspacePage({ user, defaultWorkMode = "BALANCED", onTaskCreate
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
                 onKeyDown={onKeyDown}
-                placeholder="What would you like Mystic AI to build today?"
+                placeholder="What would you like Voice AI to build today?"
                 className="w-full bg-transparent resize-none outline-none p-4 text-sm placeholder:text-muted-foreground min-h-[120px]"
                 style={{ maxHeight: "320px" }}
               />
@@ -268,7 +268,7 @@ export function WorkspacePage({ user, defaultWorkMode = "BALANCED", onTaskCreate
               <button
                 onClick={handleSubmit}
                 disabled={!prompt.trim() || submitting}
-                className="btn-mystic flex items-center gap-1.5 text-xs disabled:opacity-50 disabled:cursor-not-allowed"
+                className="btn-voice flex items-center gap-1.5 text-xs disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {submitting ? (
                   <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -287,7 +287,7 @@ export function WorkspacePage({ user, defaultWorkMode = "BALANCED", onTaskCreate
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
-                className="mt-2 mystic-card p-3 overflow-hidden"
+                className="mt-2 voice-card p-3 overflow-hidden"
               >
                 <div className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold mb-2">
                   Prompt History
@@ -313,7 +313,7 @@ export function WorkspacePage({ user, defaultWorkMode = "BALANCED", onTaskCreate
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mt-4 mystic-card p-4"
+                className="mt-4 voice-card p-4"
               >
                 <div className="flex items-start gap-3 mb-3">
                   <StatusIcon status={activeTask.status} />
@@ -378,7 +378,7 @@ export function WorkspacePage({ user, defaultWorkMode = "BALANCED", onTaskCreate
 
         {/* Right sidebar — work modes + model selector */}
         <div className="space-y-4">
-          <div className="mystic-card p-4">
+          <div className="voice-card p-4">
             <div className="text-xs font-semibold mb-3 flex items-center gap-1.5">
               <Scale className="w-3.5 h-3.5 text-primary" />
               Work Mode
@@ -410,7 +410,7 @@ export function WorkspacePage({ user, defaultWorkMode = "BALANCED", onTaskCreate
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
-                className="mystic-card p-4 overflow-hidden"
+                className="voice-card p-4 overflow-hidden"
               >
                 <div className="text-xs font-semibold mb-3">Project</div>
                 <select
@@ -450,7 +450,7 @@ export function WorkspacePage({ user, defaultWorkMode = "BALANCED", onTaskCreate
           </AnimatePresence>
 
           {/* All models live banner */}
-          <div className="mystic-card p-4"
+          <div className="voice-card p-4"
             style={{ background: "linear-gradient(135deg, rgba(48,201,149,0.06), rgba(79,140,255,0.04))" }}>
             <div className="flex items-center gap-2 mb-1">
               <CheckCircle2 className="w-3.5 h-3.5" style={{ color: "var(--success)" }} />

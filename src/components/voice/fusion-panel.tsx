@@ -63,9 +63,9 @@ export function FusionPanel({ activeTask, onRetry, onCancel }: FusionPanelProps)
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
               className="inline-block mb-3"
             >
-              <Layers className="w-8 h-8 text-muted-foreground" style={{ color: "var(--mystic-violet)" }} />
+              <Layers className="w-8 h-8 text-muted-foreground" style={{ color: "var(--voice-violet)" }} />
             </motion.div>
-            <h3 className="font-medium text-sm">Mystic Fusion Engine</h3>
+            <h3 className="font-medium text-sm">Voice Fusion Engine</h3>
             <p className="text-xs text-muted-foreground mt-1 max-w-[200px]">
               Active task details, agent assignments, and verification findings will appear here.
             </p>
@@ -137,13 +137,13 @@ export function FusionPanel({ activeTask, onRetry, onCancel }: FusionPanelProps)
                   icon={Cpu}
                   label="Tokens"
                   value={`${activeTask.usedTokens.toLocaleString()} / ${activeTask.budgetTokens.toLocaleString()}`}
-                  color="var(--mystic-blue)"
+                  color="var(--voice-blue)"
                 />
                 <Stat
                   icon={TrendingUp}
                   label="Est. cost"
                   value={`$${activeTask.estimatedCost.toFixed(4)}`}
-                  color="var(--mystic-violet)"
+                  color="var(--voice-violet)"
                 />
               </div>
 
@@ -265,9 +265,9 @@ function PanelHeader() {
   return (
     <div className="flex-shrink-0 px-3 py-2.5 border-b border-border/40 flex items-center justify-between">
       <div className="flex items-center gap-1.5">
-        <Layers className="w-3.5 h-3.5" style={{ color: "var(--mystic-violet)" }} />
+        <Layers className="w-3.5 h-3.5" style={{ color: "var(--voice-violet)" }} />
         <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-          Mystic Fusion
+          Voice Fusion
         </span>
       </div>
       <Badge variant="outline" className="text-[9px] py-0 h-4">
@@ -279,7 +279,7 @@ function PanelHeader() {
 
 function SubtaskRow({ subtask }: { subtask: any }) {
   const Icon = PROVIDER_ICONS[subtask.provider as Provider] || Brain;
-  const providerColor = PROVIDERS[subtask.provider as Provider]?.color || "var(--mystic-blue)";
+  const providerColor = PROVIDERS[subtask.provider as Provider]?.color || "var(--voice-blue)";
 
   const statusIcon = () => {
     switch (subtask.status) {

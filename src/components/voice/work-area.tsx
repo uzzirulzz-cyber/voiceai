@@ -158,7 +158,7 @@ export function WorkArea({
                         animate={{ opacity: 1, y: 0 }}
                         className="inline-flex flex-col items-center gap-3"
                       >
-                        <Sparkles className="w-8 h-8 text-muted-foreground" style={{ color: "var(--mystic-blue)" }} />
+                        <Sparkles className="w-8 h-8 text-muted-foreground" style={{ color: "var(--voice-blue)" }} />
                         <div>
                           <h3 className="font-medium">Start a new task</h3>
                           <p className="text-sm text-muted-foreground mt-1">
@@ -248,7 +248,7 @@ export function WorkArea({
                           className="rounded-xl border border-border/40 bg-card/40 p-4 mt-4"
                         >
                           <h4 className="text-sm font-semibold mb-2 flex items-center gap-2">
-                            <FileCode2 className="w-4 h-4" style={{ color: "var(--mystic-blue)" }} />
+                            <FileCode2 className="w-4 h-4" style={{ color: "var(--voice-blue)" }} />
                             Artifacts ({activeTask.artifacts.length})
                           </h4>
                           <div className="space-y-1.5">
@@ -285,7 +285,7 @@ export function WorkArea({
                         <motion.div
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
-                          className="rounded-xl border mystic-glow p-4"
+                          className="rounded-xl border voice-glow p-4"
                           style={{
                             borderColor: "oklch(0.7 0.18 150 / 40%)",
                             background: "oklch(0.7 0.18 150 / 5%)",
@@ -341,7 +341,7 @@ export function WorkArea({
                             workMode === mode
                               ? {
                                   background: "oklch(0.65 0.2 250 / 15%)",
-                                  color: "var(--mystic-blue)",
+                                  color: "var(--voice-blue)",
                                 }
                               : {}
                           }
@@ -370,7 +370,7 @@ export function WorkArea({
                       onClick={handleSubmit}
                       disabled={!prompt.trim()}
                       size="sm"
-                      className="absolute bottom-2 right-2 h-8 w-8 p-0 mystic-glow"
+                      className="absolute bottom-2 right-2 h-8 w-8 p-0 voice-glow"
                     >
                       <Send className="w-3.5 h-3.5" />
                     </Button>
@@ -401,7 +401,7 @@ export function WorkArea({
                         v{activeFile.version}
                       </Badge>
                       {editorContent !== activeFile.content && (
-                        <span className="text-[10px]" style={{ color: "var(--mystic-cyan)" }}>
+                        <span className="text-[10px]" style={{ color: "var(--voice-cyan)" }}>
                           ● unsaved
                         </span>
                       )}
@@ -421,7 +421,7 @@ export function WorkArea({
                         className="h-7 text-xs"
                         onClick={handleSaveFile}
                         disabled={editorContent === activeFile.content}
-                        style={editorContent !== activeFile.content ? { color: "var(--mystic-blue)" } : {}}
+                        style={editorContent !== activeFile.content ? { color: "var(--voice-blue)" } : {}}
                       >
                         Save
                       </Button>
@@ -542,7 +542,7 @@ export function WorkArea({
                       <Card key={art.id} className="mb-4 glass-panel">
                         <CardContent className="p-4">
                           <div className="flex items-center gap-2 mb-2">
-                            <Globe className="w-4 h-4" style={{ color: "var(--mystic-violet)" }} />
+                            <Globe className="w-4 h-4" style={{ color: "var(--voice-violet)" }} />
                             <span className="font-medium text-sm">{art.name}</span>
                           </div>
                           <pre className="text-xs whitespace-pre-wrap font-sans leading-relaxed">
@@ -574,7 +574,7 @@ export function WorkArea({
 }
 
 function EventIcon({ type, provider }: { type: string; provider?: string }) {
-  const color = provider ? PROVIDERS[provider as keyof typeof PROVIDERS]?.color : "var(--mystic-blue)";
+  const color = provider ? PROVIDERS[provider as keyof typeof PROVIDERS]?.color : "var(--voice-blue)";
 
   if (type === "TASK_COMPLETED" || type === "SUBTASK_COMPLETED") {
     return <Check className="w-3.5 h-3.5" style={{ color: "oklch(0.7 0.18 150)" }} />;

@@ -37,5 +37,5 @@ jobs:
         run: bun run build
         env:
           DATABASE_URL: "file::memory:?cache=shared"
-          NEXT_PUBLIC_APP_URL: "https://mysticai.playbeat.live"
-          NEXT_PUBLIC_APP_NAME: "Mystic AI"
+          NEXT_PUBLIC_APP_URL: "https://voiceai.playbeat.live"
+          NEXT_PUBLIC_APP_NAME: "Voice AI"

@@ -1,4 +1,4 @@
-# Mystic AI — Docker Compose for production
+# Voice AI — Docker Compose for production
 # Usage: docker compose up -d --build
 
 services:
@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: mystic-ai
+    container_name: voice-ai
     restart: unless-stopped
     ports:
       - "3000:3000"
@@ -14,9 +14,9 @@ services:
       - .env
     volumes:
       # Persist SQLite database across container rebuilds
-      - mystic-db:/app/db
+      - voice-db:/app/db
       # Persist generated artifacts
-      - mystic-artifacts:/app/storage
+      - voice-artifacts:/app/storage
     healthcheck:
       test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/api/health"]
       interval: 30s
@@ -25,5 +25,5 @@ services:
       start_period: 10s
 
 volumes:
-  mystic-db:
-  mystic-artifacts:
+  voice-db:
+  voice-artifacts:

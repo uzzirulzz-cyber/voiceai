@@ -247,7 +247,7 @@ export function ProjectExplorer({
                   )}
                   <Folder
                     className="w-4 h-4 flex-shrink-0"
-                    style={{ color: isActive ? "var(--mystic-blue)" : "oklch(0.75 0.13 200)" }}
+                    style={{ color: isActive ? "var(--voice-blue)" : "oklch(0.75 0.13 200)" }}
                   />
                   <span className="flex-1 text-left truncate">{project.name}</span>
                   {project._count && (

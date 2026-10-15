@@ -141,7 +141,7 @@ export function TopBar({
                 initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
-                className="absolute right-0 top-full mt-1 w-64 mystic-card-elevated rounded-xl p-2 z-50"
+                className="absolute right-0 top-full mt-1 w-64 voice-card-elevated rounded-xl p-2 z-50"
               >
                 <div className="px-2 py-1 text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">
                   Theme
@@ -195,7 +195,7 @@ export function TopBar({
                 initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
-                className="absolute right-0 top-full mt-1 w-80 mystic-card-elevated rounded-xl p-3 z-50"
+                className="absolute right-0 top-full mt-1 w-80 voice-card-elevated rounded-xl p-3 z-50"
               >
                 <div className="text-xs font-semibold mb-2">Notifications</div>
                 <div className="space-y-1.5">
@@ -219,7 +219,7 @@ export function TopBar({
       {/* New Task */}
       <button
         onClick={onNewTask}
-        className="btn-mystic flex items-center gap-1.5 text-xs"
+        className="btn-voice flex items-center gap-1.5 text-xs"
       >
         <Plus className="w-3.5 h-3.5" />
         <span className="hidden sm:inline">New Task</span>
@@ -241,7 +241,7 @@ export function TopBar({
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.96, y: -10 }}
                 onClick={(e) => e.stopPropagation()}
-                className="w-full max-w-xl mystic-card-elevated rounded-2xl overflow-hidden"
+                className="w-full max-w-xl voice-card-elevated rounded-2xl overflow-hidden"
               >
                 <div className="flex items-center gap-3 px-4 py-3 border-b border-border">
                   <Search className="w-4 h-4 text-muted-foreground" />

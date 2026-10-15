@@ -127,7 +127,7 @@ export function TasksPage() {
           {loading ? (
             <div className="space-y-2">{[1, 2, 3, 4].map((i) => <div key={i} className="skeleton h-16" />)}</div>
           ) : filtered.length === 0 ? (
-            <div className="text-center py-16 mystic-card">
+            <div className="text-center py-16 voice-card">
               <History className="w-10 h-10 mx-auto text-muted-foreground mb-3 opacity-50" />
               <div className="text-sm font-medium">No tasks yet</div>
               <div className="text-xs text-muted-foreground mt-1">Submit a task from AI Workspace to see it here</div>
@@ -141,7 +141,7 @@ export function TasksPage() {
                 transition={{ delay: i * 0.03 }}
                 onClick={() => selectTask(task)}
                 className={cn(
-                  "mystic-card p-3 w-full text-left",
+                  "voice-card p-3 w-full text-left",
                   selectedTask?.id === task.id && "ring-1 ring-primary"
                 )}
               >
@@ -169,7 +169,7 @@ export function TasksPage() {
             <motion.div
               initial={{ opacity: 0, x: 12 }}
               animate={{ opacity: 1, x: 0 }}
-              className="mystic-card p-4 sticky top-20"
+              className="voice-card p-4 sticky top-20"
             >
               <div className="flex items-start gap-2 mb-3">
                 <StatusIcon status={selectedTask.status} />
@@ -246,14 +246,14 @@ export function TasksPage() {
               {(selectedTask.status === "FAILED" || selectedTask.status === "CANCELLED") && (
                 <button
                   onClick={() => handleRetry(selectedTask.id)}
-                  className="btn-mystic text-xs w-full flex items-center justify-center gap-1.5"
+                  className="btn-voice text-xs w-full flex items-center justify-center gap-1.5"
                 >
                   <RefreshCw className="w-3 h-3" /> Retry task
                 </button>
               )}
             </motion.div>
           ) : (
-            <div className="mystic-card p-8 text-center text-xs text-muted-foreground">
+            <div className="voice-card p-8 text-center text-xs text-muted-foreground">
               Select a task to view details
             </div>
           )}

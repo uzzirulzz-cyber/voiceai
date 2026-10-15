@@ -1,9 +1,9 @@
-// Mystic AI - Auth helpers
+// Voice AI - Auth helpers
 // Uses Web Crypto API (works on both Edge runtime and Node.js)
 import { db } from "@/lib/db";
 import { cookies } from "next/headers";
 
-const SESSION_COOKIE = "mystic_session";
+const SESSION_COOKIE = "voice_session";
 const SESSION_DURATION_MS = 1000 * 60 * 60 * 24 * 7; // 7 days
 
 // Web Crypto API — works on Edge runtime (Cloudflare Workers) and Node.js 18+

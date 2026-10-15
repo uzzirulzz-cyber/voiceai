@@ -1,4 +1,4 @@
-// Mystic AI — Credit tracking
+// Voice AI — Credit tracking
 // Super Admin has a $250/month API credit package.
 // Each provider call deducts from the balance. Resets monthly.
 

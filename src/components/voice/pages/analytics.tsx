@@ -51,7 +51,7 @@ export function AnalyticsPage() {
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mystic-card p-5"
+          className="voice-card p-5"
         >
           <h3 className="text-sm font-semibold mb-4 flex items-center gap-2">
             <Activity className="w-4 h-4 text-primary" />
@@ -102,7 +102,7 @@ export function AnalyticsPage() {
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.05 }}
-          className="mystic-card p-5"
+          className="voice-card p-5"
         >
           <h3 className="text-sm font-semibold mb-4 flex items-center gap-2">
             <TrendingUp className="w-4 h-4 text-primary" />
@@ -168,7 +168,7 @@ function KPI({ label, value, icon: Icon, color }: { label: string; value: string
     <motion.div
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      className="mystic-card p-4"
+      className="voice-card p-4"
     >
       <div className="flex items-center justify-between mb-2">
         <span className="text-[10px] uppercase tracking-wider text-muted-foreground">{label}</span>

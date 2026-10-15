@@ -85,7 +85,7 @@ export function ArtifactsPage() {
           {[1, 2, 3, 4].map((i) => <div key={i} className="skeleton h-32" />)}
         </div>
       ) : filtered.length === 0 ? (
-        <div className="text-center py-16 mystic-card">
+        <div className="text-center py-16 voice-card">
           <FileCode2 className="w-10 h-10 mx-auto text-muted-foreground mb-3 opacity-50" />
           <div className="text-sm font-medium">No artifacts yet</div>
           <div className="text-xs text-muted-foreground mt-1">Run a task to generate code, documents, and research</div>
@@ -99,7 +99,7 @@ export function ArtifactsPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.05 }}
               onClick={() => setPreview(a)}
-              className="mystic-card p-4 text-left hover:scale-[1.01] transition-transform"
+              className="voice-card p-4 text-left hover:scale-[1.01] transition-transform"
             >
               <div className="flex items-start gap-3 mb-2">
                 <ArtifactIcon type={a.type} language={a.language} />
@@ -119,7 +119,7 @@ export function ArtifactsPage() {
           ))}
         </div>
       ) : (
-        <div className="mystic-card divide-y divide-border">
+        <div className="voice-card divide-y divide-border">
           {filtered.map((a) => (
             <button
               key={a.id}
@@ -149,7 +149,7 @@ export function ArtifactsPage() {
             initial={{ scale: 0.95 }}
             animate={{ scale: 1 }}
             onClick={(e) => e.stopPropagation()}
-            className="mystic-card-elevated rounded-2xl w-full max-w-3xl max-h-[80vh] flex flex-col overflow-hidden"
+            className="voice-card-elevated rounded-2xl w-full max-w-3xl max-h-[80vh] flex flex-col overflow-hidden"
           >
             <div className="flex items-center justify-between p-4 border-b border-border">
               <div className="flex items-center gap-2">
@@ -170,7 +170,7 @@ export function ArtifactsPage() {
                     a.click();
                     URL.revokeObjectURL(url);
                   }}
-                  className="btn-mystic text-xs flex items-center gap-1"
+                  className="btn-voice text-xs flex items-center gap-1"
                 >
                   <Download className="w-3 h-3" /> Download
                 </button>

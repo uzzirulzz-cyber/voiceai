@@ -1,4 +1,4 @@
-// Mystic AI — Unified AI Provider Client
+// Voice AI — Unified AI Provider Client
 // All 5 engines route through OpenRouter (Claude/Gemini/Codex/Research) and z-ai-sdk (GLM).
 // No mocks, no simulated responses — every call hits a real API.
 
@@ -71,8 +71,8 @@ async function callOpenRouter(
       headers: {
         Authorization: `Bearer ${OPENROUTER_API_KEY}`,
         "Content-Type": "application/json",
-        "HTTP-Referer": process.env.NEXT_PUBLIC_APP_URL || "https://mysticai.playbeat.live",
-        "X-Title": "Mystic AI — Five-Engine Workspace",
+        "HTTP-Referer": process.env.NEXT_PUBLIC_APP_URL || "https://voiceai.playbeat.live",
+        "X-Title": "Voice AI — Five-Engine Workspace",
       },
       body: JSON.stringify({
         model,
@@ -211,7 +211,7 @@ export async function callProvider(
 }
 
 function getDefaultSystemPrompt(provider: Provider): string {
-  const base = "You are part of the Mystic Fusion Engine — a multi-agent AI workspace.";
+  const base = "You are part of the Voice Fusion Engine — a multi-agent AI workspace.";
   const role: Record<Provider, string> = {
     CLAUDE: `${base} You are the Claude-equivalent reasoning engine. Provide deep reasoning, long-context analysis, writing, and architecture review. Be direct and specific.`,
     GEMINI: `${base} You are the Gemini-equivalent multimodal engine. Analyze documents, contribute structured outputs, and provide independent solutions. Be precise and structured.`,

@@ -14,11 +14,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mystic AI — Five-Engine AI Workspace",
+  title: "Voice AI — Five-Engine AI Workspace",
   description:
     "Premium multi-agent AI workspace coordinating Claude, Gemini, GLM, Codex, and Research agents. Plan, execute, verify, and deliver from one instruction.",
-  keywords: ["Mystic AI", "Multi-agent", "Claude", "Gemini", "GLM", "Codex", "AI workspace"],
-  authors: [{ name: "Mystic AI" }],
+  keywords: ["Voice AI", "Multi-agent", "Claude", "Gemini", "GLM", "Codex", "AI workspace"],
+  authors: [{ name: "Voice AI" }],
 };
 
 export default function RootLayout({

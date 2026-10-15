@@ -1,4 +1,4 @@
-// Mystic AI — OpenRouter unified AI provider client
+// Voice AI — OpenRouter unified AI provider client
 // All 5 engines route through OpenRouter's single API for live results.
 // Region-friendly models are selected to ensure global availability.
 
@@ -113,8 +113,8 @@ export async function chatCompletion(
         headers: {
           Authorization: `Bearer ${OPENROUTER_API_KEY}`,
           "Content-Type": "application/json",
-          "HTTP-Referer": process.env.NEXT_PUBLIC_APP_URL || "https://mysticai.playbeat.live",
-          "X-Title": "Mystic AI - Five-Engine Workspace",
+          "HTTP-Referer": process.env.NEXT_PUBLIC_APP_URL || "https://voiceai.playbeat.live",
+          "X-Title": "Voice AI - Five-Engine Workspace",
         },
         body: JSON.stringify({
           model: tryModel,
@@ -199,8 +199,8 @@ export async function* chatCompletionStream(
     headers: {
       Authorization: `Bearer ${OPENROUTER_API_KEY}`,
       "Content-Type": "application/json",
-      "HTTP-Referer": process.env.NEXT_PUBLIC_APP_URL || "https://mysticai.playbeat.live",
-      "X-Title": "Mystic AI - Five-Engine Workspace",
+      "HTTP-Referer": process.env.NEXT_PUBLIC_APP_URL || "https://voiceai.playbeat.live",
+      "X-Title": "Voice AI - Five-Engine Workspace",
     },
     body: JSON.stringify({
       model,

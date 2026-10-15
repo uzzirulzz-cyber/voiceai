@@ -52,7 +52,7 @@ export function BillingPage({ user }: { user: { role: string } }) {
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mystic-card p-6 mb-6 relative overflow-hidden"
+          className="voice-card p-6 mb-6 relative overflow-hidden"
           style={{
             background: "linear-gradient(135deg, rgba(221,187,112,0.10), rgba(155,122,255,0.06))",
             borderColor: "rgba(221,187,112,0.3)",
@@ -117,7 +117,7 @@ export function BillingPage({ user }: { user: { role: string } }) {
 
       {/* Provider Usage Breakdown */}
       {adminStats?.usageByProvider && Object.keys(adminStats.usageByProvider).length > 0 && (
-        <div className="mystic-card p-5 mb-6">
+        <div className="voice-card p-5 mb-6">
           <h3 className="text-sm font-semibold mb-4 flex items-center gap-2">
             <TrendingUp className="w-4 h-4 text-primary" />
             Provider Usage Breakdown
@@ -169,7 +169,7 @@ export function BillingPage({ user }: { user: { role: string } }) {
 
 function StatCard({ label, value, icon: Icon, color }: { label: string; value: any; icon: any; color: string }) {
   return (
-    <div className="mystic-card p-4">
+    <div className="voice-card p-4">
       <div className="flex items-center justify-between mb-2">
         <span className="text-[10px] uppercase tracking-wider text-muted-foreground">{label}</span>
         <Icon className="w-4 h-4" style={{ color }} />

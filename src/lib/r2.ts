@@ -1,4 +1,4 @@
-// Mystic AI — R2 Storage Client (Cloudflare R2 / S3-compatible)
+// Voice AI — R2 Storage Client (Cloudflare R2 / S3-compatible)
 // Stores generated artifacts in R2 buckets. Falls back gracefully when not configured.
 
 import { S3Client, PutObjectCommand, GetObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
@@ -7,8 +7,8 @@ import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 const R2_ACCOUNT_ID = process.env.R2_ACCOUNT_ID;
 const R2_ACCESS_KEY_ID = process.env.R2_ACCESS_KEY_ID;
 const R2_SECRET_ACCESS_KEY = process.env.R2_SECRET_ACCESS_KEY;
-const R2_BUCKET_NAME = process.env.R2_BUCKET_NAME || "mystic-artifacts";
-const R2_PUBLIC_BASE = process.env.R2_PUBLIC_BASE_URL; // e.g. https://artifacts.mysticai.playbeat.live
+const R2_BUCKET_NAME = process.env.R2_BUCKET_NAME || "voice-artifacts";
+const R2_PUBLIC_BASE = process.env.R2_PUBLIC_BASE_URL; // e.g. https://artifacts.voiceai.playbeat.live
 
 const R2_ENDPOINT = R2_ACCOUNT_ID
   ? `https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com`

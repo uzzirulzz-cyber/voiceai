@@ -1,4 +1,4 @@
-// Mystic AI — Database Seed
+// Voice AI — Database Seed
 // Bootstraps the Super Admin account, $250/mo API credit, and verified-live providers.
 // Run with: bun run scripts/seed.ts
 
@@ -13,12 +13,12 @@ async function hashPassword(password: string): Promise<string> {
 }
 
 async function main() {
-  console.log("🌱 Seeding Mystic AI database...");
+  console.log("🌱 Seeding Voice AI database...");
 
   // Create Super Admin — credentials MUST come from environment, never hardcoded
   const adminEmail = (process.env.ADMIN_EMAIL || "").toLowerCase().trim();
   const adminPassword = process.env.ADMIN_PASSWORD || "";
-  const adminName = process.env.ADMIN_NAME || "Mystic Admin";
+  const adminName = process.env.ADMIN_NAME || "Voice Admin";
   const creditMonthlyUsd = parseFloat(process.env.SUPER_ADMIN_CREDIT_MONTHLY_USD || "250");
   const creditResetDay = parseInt(process.env.SUPER_ADMIN_CREDIT_RESET_DAY || "1", 10);
 

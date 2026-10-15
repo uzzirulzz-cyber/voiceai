@@ -32,7 +32,7 @@ import {
   Zap,
   Gift,
 } from "lucide-react";
-import { MysticWordmark } from "./logo";
+import { VoiceWordmark } from "./logo";
 import { PROVIDERS } from "@/lib/types";
 import { toast } from "sonner";
 
@@ -163,9 +163,9 @@ export function AdminPanel({ user, onLogout, onNavigate }: AdminPanelProps) {
           </Button>
         </div>
         <div className="flex items-center gap-3">
-          <MysticWordmark size={32} />
+          <VoiceWordmark size={32} />
           <Badge variant="outline" className="text-[10px]">
-            <Shield className="w-3 h-3 mr-1" style={{ color: "var(--mystic-violet)" }} />
+            <Shield className="w-3 h-3 mr-1" style={{ color: "var(--voice-violet)" }} />
             Admin
           </Badge>
           <Button variant="ghost" size="sm" onClick={onLogout}>
@@ -215,14 +215,14 @@ export function AdminPanel({ user, onLogout, onNavigate }: AdminPanelProps) {
                       value={overview.overview.totalUsers}
                       sub={`${overview.overview.activeUsers} active`}
                       icon={Users}
-                      color="var(--mystic-blue)"
+                      color="var(--voice-blue)"
                     />
                     <StatCard
                       label="Total Tasks"
                       value={overview.overview.totalTasks}
                       sub={`${overview.overview.runningTasks} running`}
                       icon={Activity}
-                      color="var(--mystic-violet)"
+                      color="var(--voice-violet)"
                     />
                     <StatCard
                       label="Completion Rate"
@@ -324,7 +324,7 @@ export function AdminPanel({ user, onLogout, onNavigate }: AdminPanelProps) {
                         <Avatar className="w-8 h-8">
                           <AvatarFallback
                             className="text-xs"
-                            style={{ background: "var(--mystic-blue)", color: "white" }}
+                            style={{ background: "var(--voice-blue)", color: "white" }}
                           >
                             {(u.name || u.email)[0].toUpperCase()}
                           </AvatarFallback>
@@ -643,7 +643,7 @@ export function AdminPanel({ user, onLogout, onNavigate }: AdminPanelProps) {
                     <CardHeader>
                       <CardTitle className="text-sm flex items-center justify-between">
                         <span className="flex items-center gap-2">
-                          <TrendingUp className="w-4 h-4" style={{ color: "var(--mystic-blue)" }} />
+                          <TrendingUp className="w-4 h-4" style={{ color: "var(--voice-blue)" }} />
                           {budget.budget.period.charAt(0).toUpperCase() + budget.budget.period.slice(1)} Usage
                         </span>
                         <span className="text-xs text-muted-foreground">
@@ -692,7 +692,7 @@ export function AdminPanel({ user, onLogout, onNavigate }: AdminPanelProps) {
                   <Card className="glass-panel">
                     <CardHeader>
                       <CardTitle className="text-sm flex items-center gap-2">
-                        <Cpu className="w-4 h-4" style={{ color: "var(--mystic-violet)" }} />
+                        <Cpu className="w-4 h-4" style={{ color: "var(--voice-violet)" }} />
                         AI Provider Integration
                       </CardTitle>
                     </CardHeader>
@@ -824,7 +824,7 @@ function ProviderIconSmall({ provider }: { provider: keyof typeof PROVIDERS }) {
     RESEARCH: Globe,
   };
   const Icon = map[provider] || Layers;
-  const color = PROVIDERS[provider]?.color || "var(--mystic-blue)";
+  const color = PROVIDERS[provider]?.color || "var(--voice-blue)";
   return (
     <div
       className="w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0"

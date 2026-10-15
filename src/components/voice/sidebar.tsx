@@ -105,7 +105,7 @@ export function Sidebar({
         </div>
         {!collapsed && (
           <div className="flex-1 min-w-0">
-            <div className="text-sm font-semibold tracking-tight">Mystic AI</div>
+            <div className="text-sm font-semibold tracking-tight">Voice AI</div>
             <div className="text-[10px] uppercase tracking-wider text-muted-foreground">Enterprise Workspace</div>
           </div>
         )}
@@ -234,7 +234,7 @@ export function Sidebar({
               initial={{ opacity: 0, y: 4 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 4 }}
-              className="absolute bottom-full left-2 right-2 mb-2 mystic-card-elevated rounded-lg p-1 z-50"
+              className="absolute bottom-full left-2 right-2 mb-2 voice-card-elevated rounded-lg p-1 z-50"
             >
               <button
                 onClick={() => {

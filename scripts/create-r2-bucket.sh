@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-# Create the mystic-artifacts R2 bucket on Cloudflare
+# Create the voice-artifacts R2 bucket on Cloudflare
 # Requires: CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID env vars
 
 set -e
 
 ACCOUNT_ID="${CLOUDFLARE_ACCOUNT_ID:?Set CLOUDFLARE_ACCOUNT_ID in .env}"
 API_TOKEN="${CLOUDFLARE_API_TOKEN:?Set CLOUDFLARE_API_TOKEN in .env}"
-BUCKET_NAME="${R2_BUCKET_NAME:-mystic-artifacts}"
+BUCKET_NAME="${R2_BUCKET_NAME:-voice-artifacts}"
 
 echo "🪣 Creating R2 bucket: ${BUCKET_NAME}"
 

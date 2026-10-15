@@ -1,4 +1,4 @@
-# Mystic AI — Five-Engine AI Workspace
+# Voice AI — Five-Engine AI Workspace
 
 Multi-agent AI workspace coordinating **Claude**, **Gemini**, **GLM**, **Codex**, and a **Research** agent on the same task. Plan, execute, verify, and deliver from one instruction.
 
@@ -6,8 +6,8 @@ Built with Next.js 16, TypeScript, Tailwind CSS 4, shadcn/ui, Prisma, and Cloudf
 
 ## Features
 
-- **Five-engine orchestration** — Mystic Fusion Engine routes each subtask to the capability-best engine (reasoning, multimodal, coding, research, or diversity).
-- **Three-panel workspace** — Project Explorer (left), Work Area with Chat / Code / Preview / Docs / Research tabs (center), Mystic Fusion live status panel (right).
+- **Five-engine orchestration** — Voice Fusion Engine routes each subtask to the capability-best engine (reasoning, multimodal, coding, research, or diversity).
+- **Three-panel workspace** — Project Explorer (left), Work Area with Chat / Code / Preview / Docs / Research tabs (center), Voice Fusion live status panel (right).
 - **Task lifecycle** — 9 states: QUEUED → PLANNING → RUNNING → VERIFYING → COMPLETED. Includes pause, cancel, retry, and verification checks.
 - **Artifacts** — generated code, documents, research reports. Preview HTML in a sandboxed iframe. Download per-file.
 - **Admin panel** — RBAC (SUPER_ADMIN / ADMIN / USER), users, providers, tasks, audit logs.
@@ -44,10 +44,10 @@ See `.env.example` for the full list. Required for production:
 |---|---|
 | `DATABASE_URL` | SQLite path or Postgres URL |
 | `ADMIN_EMAIL` / `ADMIN_PASSWORD` | Used by `scripts/seed.ts` |
-| `NEXT_PUBLIC_APP_URL` | Public URL (e.g. `https://mysticai.playbeat.live`) |
+| `NEXT_PUBLIC_APP_URL` | Public URL (e.g. `https://voiceai.playbeat.live`) |
 | `R2_ACCOUNT_ID` | Cloudflare account ID |
 | `R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY` | R2 S3 credentials |
-| `R2_BUCKET_NAME` | R2 bucket (e.g. `mystic-artifacts`) |
+| `R2_BUCKET_NAME` | R2 bucket (e.g. `voice-artifacts`) |
 | `SESSION_SECRET` | Long random string for session signing |
 
 Optional AI provider keys (server-side only):
@@ -69,7 +69,7 @@ Optional AI provider keys (server-side only):
 | `bun run db:generate` | Regenerate Prisma Client |
 | `bun run scripts/seed.ts` | Seed admin + provider configs |
 
-## Deployment — mysticai.playbeat.live
+## Deployment — voiceai.playbeat.live
 
 ### Option A: VPS with Docker Compose
 
@@ -85,7 +85,7 @@ Optional AI provider keys (server-side only):
    nano .env  # Fill in real values
    ```
 
-3. **Set up DNS**: Point `mysticai.playbeat.live` (and optionally `artifacts.mysticai.playbeat.live` for R2 public access) to your VPS IP.
+3. **Set up DNS**: Point `voiceai.playbeat.live` (and optionally `artifacts.voiceai.playbeat.live` for R2 public access) to your VPS IP.
 
 4. **Build and run**:
    ```bash
@@ -101,7 +101,7 @@ Optional AI provider keys (server-side only):
 - Set all env vars in the platform dashboard
 - Set build command `bun run build`
 - Set output directory `.next`
-- Set custom domain `mysticai.playbeat.live`
+- Set custom domain `voiceai.playbeat.live`
 
 ## Project Structure
 
@@ -120,8 +120,8 @@ src/
 │       ├── storage/{status,upload}/
 │       └── admin/{overview,users,tasks,audit}/
 ├── components/
-│   ├── mystic/
-│   │   ├── logo.tsx                # Mystic hex logo
+│   ├── voice/
+│   │   ├── logo.tsx                # Voice hex logo
 │   │   ├── landing-hero.tsx        # Marketing landing
 │   │   ├── auth-screen.tsx         # Login / register
 │   │   ├── workspace.tsx           # 3-panel workspace shell

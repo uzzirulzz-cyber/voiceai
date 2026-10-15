@@ -10,7 +10,7 @@ export async function POST() {
       const { logoutUser } = await import("@/lib/auth");
       // Get token from cookie to delete the session
       const { cookies } = await import("next/headers");
-      const token = (await cookies()).get("mystic_session")?.value;
+      const token = (await cookies()).get("voice_session")?.value;
       if (token) await logoutUser(token);
     }
     await clearSessionCookie();

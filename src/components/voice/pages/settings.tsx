@@ -22,7 +22,7 @@ export function SettingsPage() {
     <div className="max-w-3xl mx-auto px-4 lg:px-6 py-6 lg:py-8">
       <div className="mb-6">
         <h1 className="text-2xl font-bold tracking-tight">Settings</h1>
-        <p className="text-sm text-muted-foreground mt-1">Customize your Mystic AI workspace</p>
+        <p className="text-sm text-muted-foreground mt-1">Customize your Voice AI workspace</p>
       </div>
 
       {/* Appearance / Theme */}
@@ -138,12 +138,12 @@ export function SettingsPage() {
       </SettingsSection>
 
       {/* System info */}
-      <SettingsSection icon={Monitor} title="System" description="Mystic AI system information">
+      <SettingsSection icon={Monitor} title="System" description="Voice AI system information">
         <div className="space-y-2">
-          <Row label="Version" value="Mystic AI Build 02" />
+          <Row label="Version" value="Voice AI Build 02" />
           <Row label="AI Gateway" value="OpenRouter + z-ai-sdk" />
           <Row label="Models Connected" value="5 / 5 live" />
-          <Row label="Storage" value="Cloudflare R2 (mystic-artifacts)" />
+          <Row label="Storage" value="Cloudflare R2 (voice-artifacts)" />
           <Row label="Framework" value="Next.js 16 · TypeScript 5" />
         </div>
       </SettingsSection>
@@ -156,7 +156,7 @@ function SettingsSection({ icon: Icon, title, description, children }: { icon: a
     <motion.div
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      className="mystic-card p-5 mb-4"
+      className="voice-card p-5 mb-4"
     >
       <div className="flex items-start gap-3 mb-4">
         <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"

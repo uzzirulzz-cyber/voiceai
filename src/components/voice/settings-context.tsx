@@ -29,7 +29,7 @@ const DEFAULTS: Settings = {
 
 const SettingsContext = createContext<SettingsContextValue | null>(null);
 
-const STORAGE_KEY = "mystic-settings";
+const STORAGE_KEY = "voice-settings";
 
 export function SettingsProvider({ children }: { children: ReactNode }) {
   const [settings, setSettings] = useState<Settings | null>(null);

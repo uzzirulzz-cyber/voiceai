@@ -91,14 +91,14 @@ export function AuthScreen({ onSuccess, onBack }: AuthScreenProps) {
           >
             <Sparkles className="w-7 h-7 text-white" />
           </motion.div>
-          <h1 className="text-2xl font-bold tracking-tight text-gradient">Mystic AI</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-gradient">Voice AI</h1>
           <p className="text-xs text-muted-foreground mt-1">
             Sign in to coordinate five AI engines on your most important work
           </p>
         </div>
 
         {/* Auth card */}
-        <div className="mystic-card-elevated rounded-2xl p-6">
+        <div className="voice-card-elevated rounded-2xl p-6">
           <div className="flex items-center gap-2 mb-5">
             <Shield className="w-4 h-4" style={{ color: "var(--primary)" }} />
             <span className="text-sm font-semibold">Secure Access</span>
@@ -181,7 +181,7 @@ export function AuthScreen({ onSuccess, onBack }: AuthScreenProps) {
             <button
               type="submit"
               disabled={loading}
-              className="btn-mystic w-full mt-4 flex items-center justify-center gap-2 py-2.5"
+              className="btn-voice w-full mt-4 flex items-center justify-center gap-2 py-2.5"
             >
               {loading ? (
                 <Loader2 className="w-4 h-4 animate-spin" />
@@ -200,7 +200,7 @@ export function AuthScreen({ onSuccess, onBack }: AuthScreenProps) {
         </div>
 
         <div className="text-center mt-4 text-[10px] text-muted-foreground">
-          By continuing, you agree to Mystic AI's Terms of Service and Privacy Policy.
+          By continuing, you agree to Voice AI's Terms of Service and Privacy Policy.
         </div>
       </motion.div>
     </div>

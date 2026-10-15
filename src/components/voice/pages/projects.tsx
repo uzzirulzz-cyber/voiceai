@@ -95,7 +95,7 @@ export function ProjectsPage() {
           <h1 className="text-2xl font-bold tracking-tight">Projects</h1>
           <p className="text-sm text-muted-foreground mt-1">{projects.length} projects · {projects.reduce((acc, p) => acc + (p._count?.tasks || 0), 0)} tasks</p>
         </div>
-        <button onClick={() => setShowCreate(true)} className="btn-mystic flex items-center gap-1.5 text-xs">
+        <button onClick={() => setShowCreate(true)} className="btn-voice flex items-center gap-1.5 text-xs">
           <Plus className="w-3.5 h-3.5" /> New Project
         </button>
       </div>
@@ -142,11 +142,11 @@ export function ProjectsPage() {
           {[1, 2, 3].map((i) => <div key={i} className="skeleton h-40" />)}
         </div>
       ) : filtered.length === 0 ? (
-        <div className="text-center py-16 mystic-card">
+        <div className="text-center py-16 voice-card">
           <FolderKanban className="w-10 h-10 mx-auto text-muted-foreground mb-3 opacity-50" />
           <div className="text-sm font-medium">No projects yet</div>
           <div className="text-xs text-muted-foreground mt-1 mb-4">Create your first project to organize AI tasks</div>
-          <button onClick={() => setShowCreate(true)} className="btn-mystic text-xs">
+          <button onClick={() => setShowCreate(true)} className="btn-voice text-xs">
             <Plus className="w-3 h-3 inline mr-1" /> New Project
           </button>
         </div>
@@ -158,7 +158,7 @@ export function ProjectsPage() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.05 }}
-              className="mystic-card p-4 group"
+              className="voice-card p-4 group"
             >
               <div className="flex items-start gap-3 mb-3">
                 <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
@@ -188,7 +188,7 @@ export function ProjectsPage() {
           ))}
         </div>
       ) : (
-        <div className="mystic-card divide-y divide-border">
+        <div className="voice-card divide-y divide-border">
           {filtered.map((p) => (
             <div key={p.id} className="flex items-center gap-3 p-3 hover:bg-accent/30 transition-colors">
               <FolderKanban className="w-4 h-4 text-muted-foreground flex-shrink-0" />
@@ -221,7 +221,7 @@ export function ProjectsPage() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="mystic-card-elevated rounded-2xl p-5 w-full max-w-md"
+              className="voice-card-elevated rounded-2xl p-5 w-full max-w-md"
             >
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-base font-semibold">Create new project</h3>
@@ -255,7 +255,7 @@ export function ProjectsPage() {
                 <button onClick={() => setShowCreate(false)} className="px-3 py-1.5 rounded-md text-xs hover:bg-accent">
                   Cancel
                 </button>
-                <button onClick={handleCreate} disabled={!newName.trim()} className="btn-mystic text-xs">
+                <button onClick={handleCreate} disabled={!newName.trim()} className="btn-voice text-xs">
                   Create
                 </button>
               </div>
@@ -280,7 +280,7 @@ function ProjectMenu({ project, onDelete }: { project: ProjectItem; onDelete: ()
       {open && (
         <>
           <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
-          <div className="absolute right-0 top-full mt-1 mystic-card-elevated rounded-lg p-1 z-50 w-40">
+          <div className="absolute right-0 top-full mt-1 voice-card-elevated rounded-lg p-1 z-50 w-40">
             <button className="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-accent text-xs text-left">
               <Archive className="w-3.5 h-3.5" /> Archive
             </button>

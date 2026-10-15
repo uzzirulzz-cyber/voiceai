@@ -1,15 +1,15 @@
 ---
-Task ID: mystic-ai-build
+Task ID: voice-ai-build
 Agent: Main Agent (Super Z)
-Task: Build Mystic AI — Five-Engine AI Workspace web app based on the user's PDF (30 pages covering Builds 01-05)
+Task: Build Voice AI — Five-Engine AI Workspace web app based on the user's PDF (30 pages covering Builds 01-05)
 
 Work Log:
-- Extracted PDF content (30 pages) describing Mystic AI: a five-engine AI workspace (Claude, Gemini, GLM, Codex, Research)
+- Extracted PDF content (30 pages) describing Voice AI: a five-engine AI workspace (Claude, Gemini, GLM, Codex, Research)
 - Initialized Next.js 16 project via fullstack-dev skill
 - Designed premium dark visual identity: deep navy background, silver/white typography, blue/violet accents (matching PDF Build 03 spec)
 - Created Prisma schema with: User, Session, Project, ProjectFile, Task, UsageRecord, ProviderConfig, AuditLog
 - Built authentication: scrypt-based password hashing, session tokens, role-based access (SUPER_ADMIN/ADMIN/USER)
-- Built the Mystic Fusion Engine orchestration module with:
+- Built the Voice Fusion Engine orchestration module with:
   - Task planner (decomposes user request into dependency-linked subtasks)
   - Agent router (selects capability-appropriate engine per subtask)
   - 5 provider executors (Claude/Gemini/GLM/Codex/Research) — GLM uses real z-ai-web-dev-sdk
@@ -19,7 +19,7 @@ Work Log:
 - Built 3-panel resizable workspace:
   - LEFT: Project Explorer (projects, files, tasks, search, create/delete)
   - CENTER: Work Area with 5 tabs (Chat, Code, Preview, Documents, Research)
-  - RIGHT: Mystic Fusion panel (current task, subtask timeline, verification, artifacts, engines legend)
+  - RIGHT: Voice Fusion panel (current task, subtask timeline, verification, artifacts, engines legend)
 - Built premium landing page with hero, 5-engine showcase, 6-step workflow, features strip, CTA
 - Built admin panel with 5 tabs: Overview (KPI cards, tasks by status, provider usage), Users (role/status management), Providers (5 engine status cards), Tasks (cancel/retry), Audit logs
 - Live task polling: frontend polls /api/tasks/execute every 1.5s while task is running
@@ -36,7 +36,7 @@ Work Log:
 Stage Summary:
 - Final deliverable: /home/z/my-project/src/app/page.tsx (single-page app routing between landing/auth/workspace/admin)
 - 17 API routes under /api/auth/, /api/projects/, /api/tasks/, /api/files/, /api/admin/, /api/providers/
-- 7 main React components under /src/components/mystic/
+- 7 main React components under /src/components/voice/
 - Database: SQLite via Prisma, 8 models
 - Real AI integration: GLM engine uses z-ai-web-dev-sdk (glm-4.6)
 - Visual identity: deep navy + silver/white + blue/violet accents per PDF spec

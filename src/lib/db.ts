@@ -1,4 +1,4 @@
-// Mystic AI — D1 Database Client (Cloudflare Workers compatible)
+// Voice AI — D1 Database Client (Cloudflare Workers compatible)
 // Replaces Prisma with direct D1 SQL queries via the Workers runtime.
 // Falls back to Prisma for local development.
 

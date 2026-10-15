@@ -107,7 +107,7 @@ export function OverviewPage({ user, credit, onNavigate, onNewTask }: OverviewPr
         animate={{ opacity: 1, y: 0 }}
         className="mb-8"
       >
-        <div className="mystic-card gradient-border p-6 lg:p-8 relative overflow-hidden">
+        <div className="voice-card gradient-border p-6 lg:p-8 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl opacity-20"
             style={{ background: "radial-gradient(circle, var(--primary), transparent 70%)" }} />
           <div className="relative">
@@ -119,13 +119,13 @@ export function OverviewPage({ user, credit, onNavigate, onNewTask }: OverviewPr
               </span>
             </div>
             <h1 className="text-3xl lg:text-4xl font-bold tracking-tight">
-              Welcome back, <span className="text-gradient">{user.name || "Mystic"}</span>
+              Welcome back, <span className="text-gradient">{user.name || "Voice"}</span>
             </h1>
             <p className="mt-2 text-muted-foreground max-w-xl">
               Orchestrate models, manage agents, and turn ideas into production-ready outcomes.
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
-              <button onClick={onNewTask} className="btn-mystic flex items-center gap-2">
+              <button onClick={onNewTask} className="btn-voice flex items-center gap-2">
                 <Sparkles className="w-4 h-4" />
                 Create AI Task
               </button>
@@ -157,7 +157,7 @@ export function OverviewPage({ user, credit, onNavigate, onNewTask }: OverviewPr
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.05 }}
             onClick={() => onNavigate(m.page)}
-            className="mystic-card p-4 text-left hover:scale-[1.02] transition-transform"
+            className="voice-card p-4 text-left hover:scale-[1.02] transition-transform"
           >
             <div className="flex items-center justify-between mb-2">
               <m.icon className="w-4 h-4" style={{ color: m.color }} />
@@ -176,7 +176,7 @@ export function OverviewPage({ user, credit, onNavigate, onNewTask }: OverviewPr
           animate={{ opacity: 1, y: 0 }}
           className="mb-8"
         >
-          <div className="mystic-card p-5 lg:p-6 relative overflow-hidden"
+          <div className="voice-card p-5 lg:p-6 relative overflow-hidden"
             style={{
               background: "linear-gradient(135deg, rgba(221,187,112,0.08), rgba(155,122,255,0.05))",
               borderColor: "rgba(221,187,112,0.25)",
@@ -219,7 +219,7 @@ export function OverviewPage({ user, credit, onNavigate, onNewTask }: OverviewPr
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.15 }}
-          className="lg:col-span-2 mystic-card p-5"
+          className="lg:col-span-2 voice-card p-5"
         >
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-sm font-semibold flex items-center gap-2">
@@ -242,7 +242,7 @@ export function OverviewPage({ user, credit, onNavigate, onNewTask }: OverviewPr
               icon={Sparkles}
               title="No tasks yet"
               description="Create your first AI task to see execution history here."
-              action={<button onClick={onNewTask} className="btn-mystic text-xs flex items-center gap-1.5">
+              action={<button onClick={onNewTask} className="btn-voice text-xs flex items-center gap-1.5">
                 <Plus className="w-3 h-3" /> Create task
               </button>}
             />
@@ -276,7 +276,7 @@ export function OverviewPage({ user, credit, onNavigate, onNewTask }: OverviewPr
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="mystic-card p-5"
+          className="voice-card p-5"
         >
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-sm font-semibold flex items-center gap-2">
@@ -309,7 +309,7 @@ export function OverviewPage({ user, credit, onNavigate, onNewTask }: OverviewPr
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.25 }}
-          className="mystic-card p-5"
+          className="voice-card p-5"
         >
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-sm font-semibold flex items-center gap-2">
@@ -355,7 +355,7 @@ export function OverviewPage({ user, credit, onNavigate, onNewTask }: OverviewPr
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="mystic-card p-5"
+          className="voice-card p-5"
         >
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-sm font-semibold flex items-center gap-2">
