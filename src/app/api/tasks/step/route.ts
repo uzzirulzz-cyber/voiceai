@@ -47,15 +47,29 @@ export async function POST(request: NextRequest) {
           data: { status: "VERIFYING" },
         });
         
-        // Simple verification: check if any artifacts exist
+        // Build verification result
         const artifacts = JSON.parse(task.artifactsJson || "[]");
-        const passed = true; // Always pass for now
+        const plan = JSON.parse(task.planJson || "[]");
+        const completedCount = plan.filter((s: any) => s.status === "COMPLETED").length;
+        const passed = completedCount > 0;
+        
+        const verification = {
+          passed,
+          summary: passed 
+            ? `Task completed successfully. ${completedCount} subtasks executed, ${artifacts.length} artifacts produced.`
+            : "Task failed — no subtasks completed.",
+          checks: [
+            { name: "Subtasks completed", passed: completedCount > 0, details: `${completedCount}/${plan.length}` },
+            { name: "Artifacts produced", passed: artifacts.length > 0, details: `${artifacts.length} files` },
+          ],
+        };
         
         await db.task.update({
           where: { id: taskId },
           data: {
             status: passed ? "COMPLETED" : "FAILED",
             completedAt: new Date(),
+            verificationJson: JSON.stringify(verification),
           },
         });
         

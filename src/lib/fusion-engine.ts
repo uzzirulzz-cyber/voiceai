@@ -391,22 +391,20 @@ Provide:
           maxTokens: 800,
         };
       } else {
-        // Synthesis
+        // Synthesis — produce the ACTUAL deliverable
         userMsg += `# Your Task
-Synthesize all prior agent outputs into a single final deliverable. Provide:
-1. ## Deliverable Summary — what was produced
-2. ## Output Artifacts — list each file with description
-3. ## Quality Assurance — what was verified
-4. ## Next Steps — recommended follow-up actions
-
-Be specific and reference the actual work done.`;
+DIRECTLY produce the final deliverable the user asked for. Do NOT write about planning or verification.
+Just output the actual result. If the user asked for text, output the text.
+If the user asked for code, output the code in a fenced code block with the language tag.
+If the user asked for a document, write the document in Markdown.
+Be concise and direct. No meta-commentary.`;
         return {
           messages: [
             { role: "system", content: systemMsg },
             { role: "user", content: userMsg },
           ],
-          temperature: 0.5,
-          maxTokens: 800,
+          temperature: 0.7,
+          maxTokens: 1500,
         };
       }
 
@@ -504,64 +502,20 @@ function extractArtifacts(subtask: Subtask, content: string, taskId: string): Ar
   const artifacts: Artifact[] = [];
 
   // For CODEX subtasks, extract code blocks as artifacts
-  if (subtask.provider !== "CODEX") {
-    // For non-coding subtasks, save the full response as a document artifact
-    if (subtask.provider === "RESEARCH") {
-      artifacts.push({
-        id: `art-${taskId}-${subtask.provider.toLowerCase()}-${subtask.idx}`,
-        name: "research-summary.md",
-        path: `/research/research-summary.md`,
-        type: "RESEARCH",
-        language: "markdown",
-        content,
-        size: content.length,
-        createdAt: new Date().toISOString(),
-        createdBy: subtask.provider,
-        version: 1,
-      });
-    }
-    return artifacts;
-  }
-
-  // CODEX: parse code blocks with file headers
-  // Look for: ### File: path/to/file.ext
-  // followed by a code block
-  const fileBlockRegex = /###\s*(?:File|file|FILE):\s*([^\n]+)\s*\n+```(\w+)?\n([\s\S]*?)```/g;
-  let match;
-  let idx = 0;
-  while ((match = fileBlockRegex.exec(content)) !== null) {
-    const filePath = match[1].trim();
-    const lang = match[2] || detectLanguage(filePath);
-    const code = match[3];
-    const fileName = filePath.split("/").pop() || `artifact-${idx}`;
-    artifacts.push({
-      id: `art-${taskId}-codex-${subtask.idx}-${idx}`,
-      name: fileName,
-      path: filePath.startsWith("/") ? filePath : `/${filePath}`,
-      type: "CODE",
-      language: lang,
-      content: code,
-      size: code.length,
-      createdAt: new Date().toISOString(),
-      createdBy: "CODEX",
-      version: 1,
-    });
-    idx++;
-  }
-
-  // Fallback: if no file headers, look for plain code blocks
-  if (artifacts.length === 0) {
-    const codeBlockRegex = /```(\w+)?\n([\s\S]*?)```/g;
-    let m;
-    idx = 0;
-    while ((m = codeBlockRegex.exec(content)) !== null) {
-      const lang = m[1] || "text";
-      const code = m[2];
-      const fileName = inferFileName(lang, idx);
+  if (subtask.provider === "CODEX") {
+    // Look for: ### File: path/to/file.ext followed by a code block
+    const fileBlockRegex = /###\s*(?:File|file|FILE):\s*([^\n]+)\s*\n+```(\w+)?\n([\s\S]*?)```/g;
+    let match;
+    let idx = 0;
+    while ((match = fileBlockRegex.exec(content)) !== null) {
+      const filePath = match[1].trim();
+      const lang = match[2] || detectLanguage(filePath);
+      const code = match[3];
+      const fileName = filePath.split("/").pop() || `artifact-${idx}`;
       artifacts.push({
         id: `art-${taskId}-codex-${subtask.idx}-${idx}`,
         name: fileName,
-        path: `/${fileName}`,
+        path: filePath.startsWith("/") ? filePath : `/${filePath}`,
         type: "CODE",
         language: lang,
         content: code,
@@ -572,8 +526,94 @@ function extractArtifacts(subtask: Subtask, content: string, taskId: string): Ar
       });
       idx++;
     }
+
+    // Fallback: if no file headers, look for plain code blocks
+    if (artifacts.length === 0) {
+      const codeBlockRegex = /```(\w+)?\n([\s\S]*?)```/g;
+      let m;
+      idx = 0;
+      while ((m = codeBlockRegex.exec(content)) !== null) {
+        const lang = m[1] || "text";
+        const code = m[2];
+        const fileName = inferFileName(lang, idx);
+        artifacts.push({
+          id: `art-${taskId}-codex-${subtask.idx}-${idx}`,
+          name: fileName,
+          path: `/${fileName}`,
+          type: "CODE",
+          language: lang,
+          content: code,
+          size: code.length,
+          createdAt: new Date().toISOString(),
+          createdBy: "CODEX",
+          version: 1,
+        });
+        idx++;
+      }
+    }
+    return artifacts;
   }
 
+  // For RESEARCH subtasks, save as research document
+  if (subtask.provider === "RESEARCH") {
+    artifacts.push({
+      id: `art-${taskId}-${subtask.provider.toLowerCase()}-${subtask.idx}`,
+      name: "research-summary.md",
+      path: `/research/research-summary.md`,
+      type: "RESEARCH",
+      language: "markdown",
+      content,
+      size: content.length,
+      createdAt: new Date().toISOString(),
+      createdBy: subtask.provider,
+      version: 1,
+    });
+    return artifacts;
+  }
+
+  // For Synthesis subtasks (CLAUDE), always create a result artifact
+  // This ensures the user always gets a downloadable deliverable
+  if (subtask.title.includes("Synthesis") || subtask.title.includes("Final")) {
+    // Try to extract code blocks first
+    const codeBlockRegex = /```(\w+)?\n([\s\S]*?)```/g;
+    let m;
+    let idx = 0;
+    while ((m = codeBlockRegex.exec(content)) !== null) {
+      const lang = m[1] || "text";
+      const code = m[2];
+      const fileName = inferFileName(lang, idx);
+      artifacts.push({
+        id: `art-${taskId}-synthesis-${idx}`,
+        name: fileName,
+        path: `/${fileName}`,
+        type: "CODE",
+        language: lang,
+        content: code,
+        size: code.length,
+        createdAt: new Date().toISOString(),
+        createdBy: subtask.provider,
+        version: 1,
+      });
+      idx++;
+    }
+
+    // Always also save the full response as a result document
+    artifacts.push({
+      id: `art-${taskId}-result-${subtask.idx}`,
+      name: "result.md",
+      path: `/result.md`,
+      type: "MARKDOWN",
+      language: "markdown",
+      content,
+      size: content.length,
+      createdAt: new Date().toISOString(),
+      createdBy: subtask.provider,
+      version: 1,
+    });
+    return artifacts;
+  }
+
+  // For all other subtasks, no artifacts (just the result text)
   return artifacts;
 }
 

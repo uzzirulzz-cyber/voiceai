@@ -354,6 +354,37 @@ export function WorkspacePage({ user, defaultWorkMode = "BALANCED", onTaskCreate
                   </div>
                 )}
 
+                {/* Completion banner */}
+                {activeTask.status === "COMPLETED" && (
+                  <div className="mt-3 pt-3 border-t border-border">
+                    <div className="flex items-center gap-2 mb-2">
+                      <CheckCircle2 className="w-4 h-4" style={{ color: "var(--success)" }} />
+                      <h4 className="text-sm font-semibold">Task Completed</h4>
+                    </div>
+                    {activeTask.verification?.summary && (
+                      <p className="text-xs text-muted-foreground">{activeTask.verification.summary}</p>
+                    )}
+                  </div>
+                )}
+
+                {/* Subtask results */}
+                {activeTask.plan && activeTask.status === "COMPLETED" && (
+                  <div className="mt-3 pt-3 border-t border-border">
+                    <div className="text-xs font-semibold mb-2">Agent Outputs</div>
+                    <div className="space-y-2 max-h-60 overflow-y-auto">
+                      {activeTask.plan.filter((s: any) => s.result && s.status === "COMPLETED").map((s: any) => (
+                        <div key={s.idx} className="p-2 rounded-md bg-card/40">
+                          <div className="text-[11px] font-medium mb-1 flex items-center gap-1.5">
+                            <span className="font-mono px-1.5 py-0.5 rounded bg-muted/50">{s.provider}</span>
+                            {s.title}
+                          </div>
+                          <pre className="text-[10px] text-muted-foreground whitespace-pre-wrap font-sans leading-relaxed max-h-32 overflow-y-auto">{s.result}</pre>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 {/* Completion + artifacts */}
                 {activeTask.status === "COMPLETED" && activeTask.artifacts?.length > 0 && (
                   <div className="mt-3 pt-3 border-t border-border">
